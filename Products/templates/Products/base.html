@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}My Shop{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'Products/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>🛒 Products</h1>
+        <nav>
+            <a href="{% url 'Products:product_list' %}">Products</a>
+            <a href="{% url 'Products:category_list' %}">Categories</a>
+            <a href="{% url 'Products:brand_list' %}">Brands</a>
+        </nav>
+    </header>
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+    <footer>
+        <p>&copy; 2025 Ecommerce App</p>
+    </footer>
+</body>
+</html>

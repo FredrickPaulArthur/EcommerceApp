@@ -1,0 +1,14 @@
+{% extends "Products/base.html" %}
+
+{% block title %}{{ product.title }}{% endblock %}
+
+{% block content %}
+<h2>{{ product.title }}</h2>
+<img src="{{ product.image.url }}" alt="{{ product.title }}" style="max-width:300px; border:1px solid #ddd;" width=150px>
+<p>{{ product.content }}</p>
+<p><strong>Price:</strong> ${{ product.get_final_price }}</p>
+<p><strong>Brand:</strong> {{ product.brand }}</p>
+<p><strong>Category:</strong> {{ product.category }}</p>
+<p><strong>Description:</strong> {{ product.description }}</p>
+<a href="{% url 'Products:product_list' %}">⬅ Back to Products</a>
+{% endblock %}

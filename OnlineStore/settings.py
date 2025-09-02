@@ -37,6 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'django_extensions',
+
+    'Products',
 ]
 
 MIDDLEWARE = [
@@ -72,10 +76,21 @@ WSGI_APPLICATION = 'OnlineStore.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'OnlineStoreDB',          # your database name
+        'USER': 'StoreAdmin',        # your postgres user
+        'PASSWORD': 'onlinestorepassword',     # your postgres password
+        'HOST': 'localhost',          # if running locally
+        'PORT': '5432',               # default PostgreSQL port
     }
 }
 
@@ -120,3 +135,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+MEDIA_URL = '_media/'
+MEDIA_ROOT = BASE_DIR / '_media/'
