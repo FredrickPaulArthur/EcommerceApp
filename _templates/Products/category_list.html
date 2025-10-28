@@ -5,6 +5,15 @@
 {% block content %}
 <h2>All Categories</h2>
 <ul>
+    <center>
+        {% if categories.has_previous %}
+            <a href="?page={{ categories.previous_page_number }}">⏮️</a>
+        {% endif %}
+        <span>{{ categories.number }}</span>
+        {% if categories.has_next %}
+            <a href="?page={{ categories.next_page_number }}">⏭️</a>
+        {% endif %}
+    </center>
     {% for category in categories %}
         <li>
             <a href="{% url 'Products:category_detail' category.slug %}">

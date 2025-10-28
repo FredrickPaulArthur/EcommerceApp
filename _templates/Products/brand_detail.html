@@ -1,0 +1,50 @@
+{% extends "Products/base.html" %}
+
+{% block title %}{{ brand.name }}{% endblock %}
+
+{% block content %}
+<h2>{{ brand.name }}</h2>
+{% if brand.logo %}
+    <img src="{{ brand.logo.url }}" alt="{{ brand.name }}" style="max-width:200px;">
+{% endif %}
+<h3>Products:</h3>
+<div>
+    <center>
+        {% if products.has_previous %}
+            <a href="?page={{ products.previous_page_number }}">⏮️</a>
+        {% endif %}
+        <span>{{ products.number }}</span>
+        {% if products.has_next %}
+            <a href="?page={{ products.next_page_number }}">⏭️</a>
+        {% endif %}
+    </center>
+
+    {% for product in products %}
+        <div class="product-card">
+            <a href="{% url 'Products:product_detail' product.slug %}">
+                <img src="{{ product.display_image_url }}" alt="{{ product.title }}" loading="lazy" />
+                <h3>{{ product.title }}</h3>
+            </a>
+            <p>${{ product.final_price }}</p>
+            {% if product.is_available %}
+                <span class="badge available">✅Available</span>
+            {% else %}
+                <span class="badge unavailable">❌Out of Stock</span>
+            {% endif %}
+        </div>
+    {% empty %}
+        <p>No products from this brand.</p>
+    {% endfor %}
+
+    <center>
+        {% if products.has_previous %}
+            <a href="?page={{ products.previous_page_number }}">⏮️</a>
+        {% endif %}
+        <span>{{ products.number }}</span>
+        {% if products.has_next %}
+            <a href="?page={{ products.next_page_number }}">⏭️</a>
+        {% endif %}
+    </center>
+</div>
+<a href="{% url 'Products:brand_list' %}">⬅ Back to Brands</a>
+{% endblock %}

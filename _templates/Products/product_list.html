@@ -1,0 +1,47 @@
+{% extends "Products/base.html" %}
+
+{% block title %}Products{% endblock %}
+
+{% block content %}
+<h2>All Products</h2>
+<div>
+    <center>
+        {% if products.has_previous %}
+            <a href="?page={{ products.previous_page_number }}">⏮️</a>
+        {% endif %}
+        <span>{{ products.number }}</span>
+        {% if products.has_next %}
+            <a href="?page={{ products.next_page_number }}">⏭️</a>
+        {% endif %}
+    </center>
+
+    {% for product in products %}
+        <div class="product-card">
+            <a href="{% url 'Products:product_detail' product.slug %}">
+                <img src="{{ product.display_image_url }}" alt="{{ product.title }}" loading="lazy">
+                <h3>{{ product.title }}</h3>
+            </a>
+            <p>
+                ${{ product.final_price }}
+                {% if product.is_available %}
+                  <span class="badge available">✅Available</span>
+                {% else %}
+                  <span class="badge unavailable">❌Out of Stock</span>
+                {% endif %}
+              </p>
+        </div>
+    {% empty %}
+        <p>No products available.</p>
+    {% endfor %}
+
+    <center>
+        {% if products.has_previous %}
+            <a href="?page={{ products.previous_page_number }}">⏮️</a>
+        {% endif %}
+        <span>{{ products.number }}</span>
+        {% if products.has_next %}
+            <a href="?page={{ products.next_page_number }}">⏭️</a>
+        {% endif %}
+    </center>
+</div>
+{% endblock %}

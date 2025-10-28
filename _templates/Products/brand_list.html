@@ -5,6 +5,15 @@
 {% block content %}
 <h2>All Brands</h2>
 <ul>
+    <center>
+        {% if brands.has_previous %}
+            <a href="?page={{ brands.previous_page_number }}">⏮️</a>
+        {% endif %}
+        <span>{{ brands.number }}</span>
+        {% if brands.has_next %}
+            <a href="?page={{ brands.next_page_number }}">⏭️</a>
+        {% endif %}
+    </center>
     {% for brand in brands %}
         <li>
             <a href="{% url 'Products:brand_detail' brand.pk %}">
