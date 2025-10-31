@@ -1,0 +1,11 @@
+name,country_code,phone_number,address,is_customer,is_admin
+Jane Doe,+44,2071230002,"456 Elm Avenue, London, UK",True,False
+Ethan Clark,+55,1199999009,"606 Walnut Circle, São Paulo, Brazil",True,False
+Liam Wilson,+81,9012345007,"404 Cedar Court, Tokyo, Japan",True,False
+Chris Brown,+1,4155550005,"202 Maple Lane, San Francisco, USA",True,False
+Olivia Taylor,+49,8912345006,"303 Birch Drive, Munich, Germany",True,False
+John Doe,+33,142270004,"123 Main Street, Paris, France",True,False
+Sophia Davis,+39,0612345008,"505 Cherry Street, Rome, Italy",True,False
+Alex Smith,+61,234560003,"789 Oak Road, Sydney, Australia",True,False
+Emma Johnson,+1,4165550004,"101 Pine Boulevard, Toronto, Canada",True,False
+Admin User,+1,2125551234,"Admin Office, New York, USA",False,True

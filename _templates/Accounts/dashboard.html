@@ -1,0 +1,16 @@
+{% extends "Accounts/base.html" %}
+
+
+
+{% block content %}
+    Hello, {{ user.username|default:"Guest" }}!
+    <hr />
+    {% if user.is_authenticated %}
+        {% include "Accounts/logout.html" %}
+        <a href="{% url 'Accounts:password_change' %}">Change password</a>
+        <a href="{% url 'Products:product_list' %}">Products</a>
+    {% else %}
+        <a href="{% url 'Accounts:login' %}">Login</a>
+        <a href="{% url 'Accounts:register' %}">Register</a>
+    {% endif %}
+{% endblock content %}

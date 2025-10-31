@@ -2,9 +2,10 @@ from django.urls import path, include
 from . import views
 from Products.b2_helper import product_image
 from django.views.decorators.cache import cache_page
-
-
 app_name = "Products"
+
+
+
 urlpatterns = [
     # Product URLs
     path("", views.product_list, name="product_list"),

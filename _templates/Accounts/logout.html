@@ -1,12 +1,14 @@
 {% extends "Accounts/base.html" %}
 
 
+{% block title %}Logout{% endblock %}
+
 {% block content %}
-    <h2>Sign Up</h2>
-    <form method="post">
+    <h2>Logout</h2>
+    <form method="POST" action="{% url 'Accounts:logout' %}">
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" value="Sign Up" />
+        <input type="submit" value="Logout" />
     </form>
     <p>
         <a href="{% url 'Accounts:dashboard' %}">Back to dashboard</a>

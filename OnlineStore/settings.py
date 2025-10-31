@@ -45,7 +45,14 @@ INSTALLED_APPS = [
     'storages',
 
     'Products',
-    'Accounts'
+    'Accounts',
+    # 'Cart',
+    # 'Orders',
+    # 'Search',
+    # 'Payments',
+    # 'Wishlist',
+    # 'Reviews',
+    # 'Checkout',
 ]
 
 MIDDLEWARE = [
@@ -53,9 +60,9 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
 
     # Site-Wide Cache Middleware
-    "django.middleware.cache.UpdateCacheMiddleware",    # saves responses to cache
+    # "django.middleware.cache.UpdateCacheMiddleware",    # saves responses to cache
     "django.middleware.common.CommonMiddleware",        # common middleware
-    "django.middleware.cache.FetchFromCacheMiddleware", # fetches from cache if available
+    # "django.middleware.cache.FetchFromCacheMiddleware", # fetches from cache if available
 
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -124,6 +131,7 @@ DATABASES = {
 # DATABASE_ROUTERS = ['path.to.MongoDBRouter']  # Create a database router
 
 
+'''
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
 
@@ -141,6 +149,7 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+'''
 
 
 # Internationalization
@@ -161,8 +170,8 @@ USE_TZ = True
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-LOGIN_REDIRECT_URL = "/"
-LOGOUT_REDIRECT_URL = "/"
+LOGIN_REDIRECT_URL = "dashboard/"
+LOGOUT_REDIRECT_URL = "dashboard/"
 
 
 # BACKBLAZE B2
@@ -178,3 +187,6 @@ B2_MEDIA_URL = f'https://f000.backblazeb2.com/file/{B2_BUCKET_NAME}/'
 AUTH_USER_MODEL = 'Accounts.CustomUser'
 
 DATA_UPLOAD_MAX_NUMBER_FIELDS = 2000
+
+
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"

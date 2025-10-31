@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}User{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'Products/styles.css' %}">
+</head>
+<body>
+    <h1>Welcome!</h1>
+    {% block content %}
+    {% endblock content %}
+</body>
+</html>
