@@ -20,4 +20,7 @@ urlpatterns = [
     path("brands/", views.brand_list, name="brand_list"),
     # path("brands/<int:pk>/", cache_page(300)(views.brand_detail), name="brand_detail"),     # Per-view caching for 300 seconds
     path("brands/<int:pk>/", views.brand_detail, name="brand_detail"),
+
+    # Search URLs
+    path("search/", views.search_products, name="search_products"),
 ]

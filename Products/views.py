@@ -3,6 +3,7 @@ from .models import Product, Category, Brand
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.cache import never_cache, cache_control, cache_page
 from django.core.paginator import Paginator
+from django.db.models import Q
 
 
 
@@ -77,3 +78,23 @@ def brand_detail(request, pk):
 
     context = {"brand": brand, "products": products_of_brand}
     return render(request, "Products/brand_detail.html", context)
+
+
+
+# Search View
+def search_products(request):
+    query = request.GET.get('product_q', '')
+    if query:
+        products = Product.objects.filter(
+            Q(title__icontains=query) | Q(description__icontains=query),  # Added description filter
+            is_available=True
+        )
+    else:
+        products = Product.objects.none()
+
+    pag = Paginator(products, 12)
+    page_number = request.GET.get('page')
+    products = pag.get_page(page_number)
+
+    context = {"products": products, "query": query}
+    return render(request, "Products/search_results.html", context)
