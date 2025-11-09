@@ -85,10 +85,7 @@ def brand_detail(request, pk):
 def search_products(request):
     query = request.GET.get('product_q', '')
     if query:
-        products = Product.objects.filter(
-            Q(title__icontains=query) | Q(description__icontains=query),  # Added description filter
-            is_available=True
-        )
+        products = Product.objects.filter(Q(title__icontains=query) | Q(description__icontains=query),)
     else:
         products = Product.objects.none()
 

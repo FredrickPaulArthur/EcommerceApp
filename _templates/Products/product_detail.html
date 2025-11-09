@@ -13,5 +13,19 @@
 <p><strong>Brand:</strong> {{ product.brand }}</p>
 <p><strong>Category:</strong> {{ product.category }}</p>
 <p><strong>Description:</strong> {{ product.description }}</p>
+
+<form method="POST" action="{% url 'Cart:add_to_cart' product.slug %}">
+	{% csrf_token %}
+	<button type="submit">Add to Cart</button>
+</form>
+<br>
+<form method="" action="">
+	{% csrf_token %}
+	<input type="hidden" name="quantity" value="1">
+	<button type="submit">Buy Now</button>
+</form>
+<br>
+
+
 <a href="{% url 'Products:product_list' %}">⬅ Back to Products</a>
 {% endblock %}

@@ -28,7 +28,20 @@
                 {% else %}
                   <span class="badge unavailable">❌Out of Stock</span>
                 {% endif %}
-              </p>
+            </p>
+            {% if product.is_available %}
+                <form method="POST" action="{% url 'Cart:add_to_cart' product.slug %}">
+                    {% csrf_token %}
+                    <button type="submit">Add to Cart</button>
+                </form>
+                <br>
+                <form method="" action="">
+                    {% csrf_token %}
+                    <input type="hidden" name="quantity" value="1">
+                    <button type="submit">Buy Now</button>
+                </form>
+                <br>
+            {% endif %}
         </div>
     {% empty %}
         <p>No products available.</p>

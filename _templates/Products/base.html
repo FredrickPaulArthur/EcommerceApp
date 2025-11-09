@@ -13,6 +13,14 @@
             <a href="{% url 'Products:product_list' %}">Products</a>
             <a href="{% url 'Products:category_list' %}">Categories</a>
             <a href="{% url 'Products:brand_list' %}">Brands</a>
+            <a href="{% url 'Cart:view_cart' %}">Cart</a>
+            {% if user.is_authenticated %}
+                <a href="{% url 'Accounts:logout' %}">Logout</a>
+                <span>Welcome, {{ user.username }}!</span>
+            {% else %}
+                <a href="{% url 'Accounts:login' %}">Login</a>
+                <a href="{% url 'Accounts:register' %}">Register</a>
+            {% endif %}
         </nav>
     </header>
     <div class="container">

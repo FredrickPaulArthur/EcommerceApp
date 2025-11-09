@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}My Cart{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'Products/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>🛒 Ecommerce App</h1>
+    </header>
+    <div class="container">
+        <form method="GET" action="{% url 'Products:search_products' %}">
+            <input type="text" name="product_q" placeholder="Search...">
+            <button type="submit">Search</button>
+        </form>
+    </div>
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+    <footer>
+        <p>&copy; 2025 Ecommerce App</p>
+    </footer>
+</html>
